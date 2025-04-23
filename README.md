@@ -1,4 +1,5 @@
 **Console-based Task Manager – Java, OOP, File Serialization**
+
 Designed and implemented a console-based Task Manager application using core Java and OOP principles.
 
 Supported CRUD operations: Create, update, delete, and view tasks with fields like title, description, priority, status, and deadlines.
