@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        TaskManager manager = new TaskManager();
+        TaskManager manager = new TaskManager( new FileTaskRepository());
         manager.loadTasksFromFile("tasks.ser");
         while (true) {
             System.out.println("\n========= Task Manager =========");
@@ -37,7 +37,7 @@ public class Main {
                     String endTime = scanner.nextLine();
 
                     boolean added = manager.addTask(title, description, priority, status, startTime, endTime);
-                    manager.saveTasksToFile("tasks.ser");
+                    manager.saveTasksToFile();
                     System.out.println(added ? "Task added." : "Duplicate task. Not added.");
                 }
                 case 2 -> {
@@ -57,14 +57,14 @@ public class Main {
                     String endTime = scanner.nextLine();
 
                     boolean updated = manager.updateTask(id, title, description, priority, status, startTime, endTime);
-                    manager.saveTasksToFile("tasks.ser");
+                    manager.saveTasksToFile();
                     System.out.println(updated ? "Task updated." : "Task not found.");
                 }
                 case 3 -> {
                     System.out.print("Task ID to delete: ");
                     int id = scanner.nextInt(); scanner.nextLine();
                     boolean deleted = manager.deleteTask(id);
-                    manager.saveTasksToFile("tasks.ser");
+                    manager.saveTasksToFile();
                     System.out.println(deleted ? "Task deleted." : "Task not found.");
                 }
                 case 4 -> manager.fetchTasks();
